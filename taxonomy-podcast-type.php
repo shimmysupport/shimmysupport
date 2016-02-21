@@ -39,20 +39,37 @@ get_header(); ?>
 	<div id="secondary">
 		<div class="sidebartaglist">
 
-			<?php
-			function get_custom_terms($taxonomies, $args){
-			$args = array('orderby'=>'asc','hide_empty'=>true);
-			$custom_terms = get_terms(array($taxonomies), $args);
-			foreach($custom_terms as $term){
-    			echo '<a href="' . get_tag_link ($term) . '" rel="tag">' . $term->name . ' (' . $term->count . ') </a><br>';
-			}
-			}?>
-
 			<h1>Bellydancers</h1>
-			<?php get_custom_terms('bellydancer'); ?>
+			<?php $terms = get_terms( 'bellydancer' );
+			foreach ( $terms as $term ) {
+ 
+    			// The $term is an object, so we don't need to specify the $taxonomy.
+    			$term_link = get_term_link( $term );
+    
+    			// If there was an error, continue to the next term.
+    			if ( is_wp_error( $term_link ) ) {
+        			continue;
+    			}
+ 
+    			// We successfully got a link. Print it out.
+    			echo '<a href="' . esc_url( $term_link ) . '" rel="tag">' . $term->name . ' (' . $term->count . ') </a><br>';
+			} ?>
 
 			<h1>Podcast Type</h1>
-			<?php get_custom_terms('podcast-type'); ?>
+			<?php $terms = get_terms( 'podcast-type' );
+			foreach ( $terms as $term ) {
+ 
+    			// The $term is an object, so we don't need to specify the $taxonomy.
+    			$term_link = get_term_link( $term );
+    
+    			// If there was an error, continue to the next term.
+    			if ( is_wp_error( $term_link ) ) {
+        			continue;
+    			}
+ 
+    			// We successfully got a link. Print it out.
+    			echo '<a href="' . esc_url( $term_link ) . '" rel="tag">' . $term->name . ' (' . $term->count . ') </a><br>';
+			} ?>
 
 		</div><!-- sidebartaglist -->
 	</div><!-- secondary -->

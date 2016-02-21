@@ -974,6 +974,16 @@ ul.tml-user-links{
 ul.tml-user-links li{
 	font-family:"Muli",arial,sans-serif;
 }
+#buddypress #header-cover-image{
+	height:auto!important;
+}
+#buddypress #cover-image-container{
+	margin-bottom:40px;
+}
+.entypo-forward{
+	display: none!important;
+	width:0px!important;
+}
 
 
 /*************** Resources ***************/
